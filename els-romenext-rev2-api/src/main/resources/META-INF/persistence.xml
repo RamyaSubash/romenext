@@ -1,0 +1,57 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+		<persistence-unit name="romenext" transaction-type="RESOURCE_LOCAL">
+<!--             <jta-data-source>java:jboss/romenext</jta-data-source> -->
+            
+		<!-- Deco Entities -->
+		<class>com.els.romenext.core.db.entity.deco.RomeDecorator</class>
+		<class>com.els.romenext.core.db.entity.deco.RomeDecoratorProperty</class>
+		<class>com.els.romenext.core.db.entity.deco.RomeDecoratorVersion</class>
+		
+		<!-- Log Entities -->
+		<class>com.els.romenext.core.db.entity.log.UserLog</class>
+		
+		<!-- Model Entities -->
+		<class>com.els.romenext.core.db.entity.model.Model</class>
+		<class>com.els.romenext.core.db.entity.model.ModelProperty</class>
+		<class>com.els.romenext.core.db.entity.model.ModelShape</class>
+		<class>com.els.romenext.core.db.entity.model.Part</class>
+		
+		<!-- Permission Entities -->
+		<class>com.els.romenext.core.db.entity.permission.Group</class>
+		
+		<!-- Tab Entities -->
+		<class>com.els.romenext.core.db.entity.tab.TabContainer</class>
+		<class>com.els.romenext.core.db.entity.tab.TabActionsContainer</class>		
+		<class>com.els.romenext.core.db.entity.tab.TabObject</class>
+		<class>com.els.romenext.core.db.entity.tab.TabObjectProperty</class>
+		
+		<!-- Version entites -->
+		<class>com.els.romenext.core.db.entity.version.RomeVersion</class>
+		
+		<class>com.els.romenext.core.db.entity.MetadataContainer</class>
+		<class>com.els.romenext.core.db.entity.MetadataRepoContainer</class>
+		<class>com.els.romenext.core.db.entity.RomeType</class>
+		<class>com.els.romenext.core.db.entity.RomeTypeProperty</class>
+		<class>com.els.romenext.core.db.entity.RomeRule</class>
+		<class>com.els.romenext.core.db.entity.RomeRuleProperty</class>
+		<class>com.els.romenext.core.db.entity.RomeConnection</class>
+		
+		<class>com.els.romenext.core.db.entity.RomeGroupType</class>
+		
+		<class>com.els.romenext.core.db.entity.RomeTypeRomeDecorator</class>
+		<class>com.els.romenext.core.db.entity.RomeTypeDecoratorPropertyValue</class>
+		
+		<class>com.els.romenext.core.db.entity.preference.RomePreferenceGroupTypeProperty</class>		
+		<class>com.els.romenext.core.db.entity.preference.RomePreferenceGroupTypePropertyValue</class>
+		
+		<class>com.els.romenext.core.db.entity.workspace.DisplayWorkspace</class>
+		
+		<class>com.els.romenext.core.db.entity.rule.RomeRuleDecoratorPropertyValue</class>
+		
+		<class>com.els.romenext.core.db.entity.mysql.RomeMysqlUser</class>
+		
+       </persistence-unit>
+</persistence>

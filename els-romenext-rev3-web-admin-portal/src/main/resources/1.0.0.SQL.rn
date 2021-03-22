@@ -1,0 +1,1006 @@
+-- MySQL dump 10.13  Distrib 5.7.21, for Linux (x86_64)
+--
+-- Host: localhost    Database: romenext
+-- ------------------------------------------------------
+-- Server version	5.7.21-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `els_romenext_connections`
+--
+
+DROP TABLE IF EXISTS `els_romenext_connections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_connections` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `classification` int(11) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `maximum` int(11) DEFAULT NULL,
+  `minimum` int(11) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `status` bit(1) DEFAULT NULL,
+  `end_rome_type` bigint(20) DEFAULT NULL,
+  `metadata_id` bigint(20) DEFAULT NULL,
+  `rome_rule` bigint(20) DEFAULT NULL,
+  `start_rome_type` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK721p1pirxdtjadilea9wuffl6` (`end_rome_type`),
+  KEY `FK7ua1cd3agnvwbq9clsc9d4064` (`metadata_id`),
+  KEY `FKepsd91a150o7hftq2qce6s7mn` (`rome_rule`),
+  KEY `FKhxy6yi3j6it2623b029cchfrf` (`start_rome_type`),
+  CONSTRAINT `FK721p1pirxdtjadilea9wuffl6` FOREIGN KEY (`end_rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `FK7ua1cd3agnvwbq9clsc9d4064` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`),
+  CONSTRAINT `FKepsd91a150o7hftq2qce6s7mn` FOREIGN KEY (`rome_rule`) REFERENCES `els_romenext_rules` (`id`),
+  CONSTRAINT `FKhxy6yi3j6it2623b029cchfrf` FOREIGN KEY (`start_rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `els_romenext_connections_ibfk_1` FOREIGN KEY (`start_rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `els_romenext_connections_ibfk_2` FOREIGN KEY (`rome_rule`) REFERENCES `els_romenext_rules` (`id`),
+  CONSTRAINT `els_romenext_connections_ibfk_3` FOREIGN KEY (`end_rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `els_romenext_connections_ibfk_4` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_decos`
+--
+
+DROP TABLE IF EXISTS `els_romenext_decos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_decos` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `classification` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `friendly_name` varchar(255) DEFAULT NULL,
+  `grouping` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `tagid` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_decos_properties`
+--
+
+DROP TABLE IF EXISTS `els_romenext_decos_properties`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_decos_properties` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `default_value` varchar(255) DEFAULT NULL,
+  `design` bit(1) DEFAULT NULL,
+  `display` bit(1) DEFAULT NULL,
+  `is_hidden` bit(1) DEFAULT NULL,
+  `is_required` bit(1) DEFAULT NULL,
+  `maximum_value` varchar(255) DEFAULT NULL,
+  `minimum_value` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `must_be_unique` bit(1) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `property_type` int(11) DEFAULT NULL,
+  `rome_decorator` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKlamph30ts65jdbbhgu6oole1b` (`rome_decorator`),
+  CONSTRAINT `FKlamph30ts65jdbbhgu6oole1b` FOREIGN KEY (`rome_decorator`) REFERENCES `els_romenext_decos` (`id`),
+  CONSTRAINT `els_romenext_decos_properties_ibfk_1` FOREIGN KEY (`rome_decorator`) REFERENCES `els_romenext_decos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_decos_version`
+--
+
+DROP TABLE IF EXISTS `els_romenext_decos_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_decos_version` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `all_libraries` text,
+  `button_script` text,
+  `created_date` datetime DEFAULT NULL,
+  `init_script` text,
+  `init_version_fn` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `version_number` bigint(20) DEFAULT NULL,
+  `rome_decorator` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKi0hm1pk08utwciifspce6eoks` (`rome_decorator`),
+  CONSTRAINT `FKi0hm1pk08utwciifspce6eoks` FOREIGN KEY (`rome_decorator`) REFERENCES `els_romenext_decos` (`id`),
+  CONSTRAINT `els_romenext_decos_version_ibfk_1` FOREIGN KEY (`rome_decorator`) REFERENCES `els_romenext_decos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_metadata`
+--
+
+DROP TABLE IF EXISTS `els_romenext_metadata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_metadata` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `uuid` varchar(255) DEFAULT NULL,
+  `user_group` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_metadata_repo`
+--
+
+DROP TABLE IF EXISTS `els_romenext_metadata_repo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_metadata_repo` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `ip` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `metadata_id` bigint(20) DEFAULT NULL,
+  `user_group` varchar(255) DEFAULT NULL,
+  `neo4j_instance` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKnqp70gvnq13yrittg2j8eqrcr` (`metadata_id`),
+  KEY `FK75B2B07E499CE2D6` (`neo4j_instance`),
+  CONSTRAINT `FK75B2B07E499CE2D6` FOREIGN KEY (`neo4j_instance`) REFERENCES `els_romenext_neo4j_instances` (`id`),
+  CONSTRAINT `FKnqp70gvnq13yrittg2j8eqrcr` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`),
+  CONSTRAINT `els_romenext_metadata_repo_ibfk_1` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_model`
+--
+
+DROP TABLE IF EXISTS `els_romenext_model`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_model` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `childEnabled` bit(1) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `rome_type` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKjkxuocf4c5uy3b7p2o2ox2ns0` (`rome_type`),
+  CONSTRAINT `FKjkxuocf4c5uy3b7p2o2ox2ns0` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `els_romenext_model_ibfk_1` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_model_part`
+--
+
+DROP TABLE IF EXISTS `els_romenext_model_part`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_model_part` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `part_group` int(11) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `rome_model` bigint(20) DEFAULT NULL,
+  `rome_model_property` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK3tfnhgkc9asak15eipo6tcdmi` (`rome_model`),
+  KEY `FK6fgu3cnudkbx148jilgtvle25` (`rome_model_property`),
+  CONSTRAINT `FK3tfnhgkc9asak15eipo6tcdmi` FOREIGN KEY (`rome_model`) REFERENCES `els_romenext_model` (`id`),
+  CONSTRAINT `FK6fgu3cnudkbx148jilgtvle25` FOREIGN KEY (`rome_model_property`) REFERENCES `els_romenext_model_property` (`id`),
+  CONSTRAINT `els_romenext_model_part_ibfk_1` FOREIGN KEY (`rome_model`) REFERENCES `els_romenext_model` (`id`),
+  CONSTRAINT `els_romenext_model_part_ibfk_2` FOREIGN KEY (`rome_model_property`) REFERENCES `els_romenext_model_property` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_model_property`
+--
+
+DROP TABLE IF EXISTS `els_romenext_model_property`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_model_property` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `default_value` varchar(255) DEFAULT NULL,
+  `is_required` bit(1) DEFAULT NULL,
+  `maximum_value` varchar(255) DEFAULT NULL,
+  `minimum_value` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `must_be_unique` bit(1) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `parent_child` int(11) DEFAULT NULL,
+  `property_modifier_type` int(11) DEFAULT NULL,
+  `property_position_type` int(11) DEFAULT NULL,
+  `property_type` int(11) DEFAULT NULL,
+  `rome_model` bigint(20) DEFAULT NULL,
+  `rome_type_property` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKsj4id1ihj0ss9mclfundyygcu` (`rome_model`),
+  KEY `FKe5twbmkrus8li0rhnq6o2ptm6` (`rome_type_property`),
+  CONSTRAINT `FKe5twbmkrus8li0rhnq6o2ptm6` FOREIGN KEY (`rome_type_property`) REFERENCES `els_romenext_type_properties` (`id`),
+  CONSTRAINT `FKsj4id1ihj0ss9mclfundyygcu` FOREIGN KEY (`rome_model`) REFERENCES `els_romenext_model` (`id`),
+  CONSTRAINT `els_romenext_model_property_ibfk_1` FOREIGN KEY (`rome_model`) REFERENCES `els_romenext_model` (`id`),
+  CONSTRAINT `els_romenext_model_property_ibfk_2` FOREIGN KEY (`rome_type_property`) REFERENCES `els_romenext_type_properties` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_model_shape`
+--
+
+DROP TABLE IF EXISTS `els_romenext_model_shape`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_model_shape` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `angle` double DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `default_value` varchar(255) DEFAULT NULL,
+  `depth` double DEFAULT NULL,
+  `shapeGroup` int(11) DEFAULT NULL,
+  `group_shape` int(11) DEFAULT NULL,
+  `rome_group_shape_parent` bigint(20) DEFAULT NULL,
+  `height` double DEFAULT NULL,
+  `isConstruction` bit(1) DEFAULT NULL,
+  `isHidden` bit(1) DEFAULT NULL,
+  `is_required` bit(1) DEFAULT NULL,
+  `line_width` double DEFAULT NULL,
+  `maximum_value` varchar(255) DEFAULT NULL,
+  `minimum_value` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `must_be_unique` bit(1) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `offset_units` int(11) DEFAULT NULL,
+  `parentChildState` int(11) DEFAULT NULL,
+  `property_type` int(11) DEFAULT NULL,
+  `line_rgb` varchar(255) DEFAULT NULL,
+  `shape` int(11) DEFAULT NULL,
+  `shape_type` int(11) DEFAULT NULL,
+  `width` double DEFAULT NULL,
+  `x1` double DEFAULT NULL,
+  `x2` double DEFAULT NULL,
+  `x3` double DEFAULT NULL,
+  `y1` double DEFAULT NULL,
+  `y2` double DEFAULT NULL,
+  `y3` double DEFAULT NULL,
+  `z1` double DEFAULT NULL,
+  `z2` double DEFAULT NULL,
+  `z3` double DEFAULT NULL,
+  `rome_model` bigint(20) DEFAULT NULL,
+  `rome_model_property` bigint(20) DEFAULT NULL,
+  `rome_shape_parent` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKf1knq9wouv11b72lspko1cnkw` (`rome_model`),
+  KEY `FK7j26vba7gs1y1scmxngurqm5x` (`rome_model_property`),
+  KEY `FK4hwgpqll3j1j0xaeow0vsw8ur` (`rome_shape_parent`),
+  CONSTRAINT `FK4hwgpqll3j1j0xaeow0vsw8ur` FOREIGN KEY (`rome_shape_parent`) REFERENCES `els_romenext_model_shape` (`id`),
+  CONSTRAINT `FK7j26vba7gs1y1scmxngurqm5x` FOREIGN KEY (`rome_model_property`) REFERENCES `els_romenext_model_property` (`id`),
+  CONSTRAINT `FKf1knq9wouv11b72lspko1cnkw` FOREIGN KEY (`rome_model`) REFERENCES `els_romenext_model` (`id`),
+  CONSTRAINT `els_romenext_model_shape_ibfk_1` FOREIGN KEY (`rome_model`) REFERENCES `els_romenext_model` (`id`),
+  CONSTRAINT `els_romenext_model_shape_ibfk_2` FOREIGN KEY (`rome_shape_parent`) REFERENCES `els_romenext_model_shape` (`id`),
+  CONSTRAINT `els_romenext_model_shape_ibfk_3` FOREIGN KEY (`rome_model_property`) REFERENCES `els_romenext_model_property` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_mysql_group`
+--
+
+DROP TABLE IF EXISTS `els_romenext_mysql_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_mysql_group` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `D` bit(1) DEFAULT NULL,
+  `I` bit(1) DEFAULT NULL,
+  `S` bit(1) DEFAULT NULL,
+  `U` bit(1) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `host` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_mysql_group_type`
+--
+
+DROP TABLE IF EXISTS `els_romenext_mysql_group_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_mysql_group_type` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mysql_group` bigint(20) DEFAULT NULL,
+  `rome_type` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKkrpjf20ksscs8kdhs5bjasxyc` (`mysql_group`),
+  KEY `FK1ye2nww6bdhve974j794etjod` (`rome_type`),
+  CONSTRAINT `FK1ye2nww6bdhve974j794etjod` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `FKkrpjf20ksscs8kdhs5bjasxyc` FOREIGN KEY (`mysql_group`) REFERENCES `els_romenext_mysql_group` (`id`),
+  CONSTRAINT `els_romenext_mysql_group_type_ibfk_1` FOREIGN KEY (`mysql_group`) REFERENCES `els_romenext_mysql_group` (`id`),
+  CONSTRAINT `els_romenext_mysql_group_type_ibfk_2` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_neo4j_instances`
+--
+
+DROP TABLE IF EXISTS `els_romenext_neo4j_instances`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_neo4j_instances` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `username_password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_perm_metadata_group_join`
+--
+
+DROP TABLE IF EXISTS `els_romenext_perm_metadata_group_join`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_perm_metadata_group_join` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `createdDate` datetime DEFAULT NULL,
+  `isOwner` bit(1) DEFAULT NULL,
+  `modifiedDate` datetime DEFAULT NULL,
+  `group_name` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `metadata_id` bigint(20) DEFAULT NULL,
+  `userGroup_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK93830EAF33A10E87` (`metadata_id`),
+  KEY `FK93830EAFE09E0A8F` (`userGroup_id`),
+  CONSTRAINT `FK93830EAF33A10E87` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`),
+  CONSTRAINT `FK93830EAFE09E0A8F` FOREIGN KEY (`userGroup_id`) REFERENCES `els_romenext_perm_user_group` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_perm_user_group`
+--
+
+DROP TABLE IF EXISTS `els_romenext_perm_user_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_perm_user_group` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `enabled` bit(1) DEFAULT NULL,
+  `group_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_perm_user_group_join`
+--
+
+DROP TABLE IF EXISTS `els_romenext_perm_user_group_join`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_perm_user_group_join` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `createdDate` datetime DEFAULT NULL,
+  `isOwner` bit(1) DEFAULT NULL,
+  `modifiedDate` datetime DEFAULT NULL,
+  `group_name` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `userGroup_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK103071363B2657F` (`user_id`),
+  KEY `FK1030713E09E0A8F` (`userGroup_id`),
+  CONSTRAINT `FK103071363B2657F` FOREIGN KEY (`user_id`) REFERENCES `els_romenext_users` (`id`),
+  CONSTRAINT `FK1030713E09E0A8F` FOREIGN KEY (`userGroup_id`) REFERENCES `els_romenext_perm_user_group` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_pref_grouptype_property`
+--
+
+DROP TABLE IF EXISTS `els_romenext_pref_grouptype_property`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_pref_grouptype_property` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `default_value` varchar(255) DEFAULT NULL,
+  `design` bit(1) DEFAULT NULL,
+  `display` bit(1) DEFAULT NULL,
+  `is_hidden` bit(1) DEFAULT NULL,
+  `is_required` bit(1) DEFAULT NULL,
+  `maximum_value` varchar(255) DEFAULT NULL,
+  `minimum_value` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `must_be_unique` bit(1) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `property_type` int(11) DEFAULT NULL,
+  `rome_type` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKlslqjf16jaqa8ijwbysj989rw` (`rome_type`),
+  CONSTRAINT `FKlslqjf16jaqa8ijwbysj989rw` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_pref_grouptype_property_value`
+--
+
+DROP TABLE IF EXISTS `els_romenext_pref_grouptype_property_value`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_pref_grouptype_property_value` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `value` varchar(255) DEFAULT NULL,
+  `rome_pref_property` bigint(20) DEFAULT NULL,
+  `rome_group_type` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKk0mucgktttm59er2vvph9yh7x` (`rome_pref_property`),
+  KEY `FKbyh49kvhdcn82mi6pru1ifjck` (`rome_group_type`),
+  CONSTRAINT `FKbyh49kvhdcn82mi6pru1ifjck` FOREIGN KEY (`rome_group_type`) REFERENCES `els_romenext_mysql_group_type` (`id`),
+  CONSTRAINT `FKk0mucgktttm59er2vvph9yh7x` FOREIGN KEY (`rome_pref_property`) REFERENCES `els_romenext_pref_grouptype_property` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_rule_decorator_property_value`
+--
+
+DROP TABLE IF EXISTS `els_romenext_rule_decorator_property_value`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_rule_decorator_property_value` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `value` varchar(255) DEFAULT NULL,
+  `rome_decorator_property` bigint(20) DEFAULT NULL,
+  `rome_rule` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK4s1nunp62x4edh7quglvn6j6h` (`rome_decorator_property`),
+  KEY `FKgex3cx2no9on5mkkucse5uapn` (`rome_rule`),
+  CONSTRAINT `FK4s1nunp62x4edh7quglvn6j6h` FOREIGN KEY (`rome_decorator_property`) REFERENCES `els_romenext_decos_properties` (`id`),
+  CONSTRAINT `FKgex3cx2no9on5mkkucse5uapn` FOREIGN KEY (`rome_rule`) REFERENCES `els_romenext_rules` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_rule_properties`
+--
+
+DROP TABLE IF EXISTS `els_romenext_rule_properties`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_rule_properties` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `default_value` varchar(255) DEFAULT NULL,
+  `is_required` bit(1) DEFAULT NULL,
+  `maximum_value` varchar(255) DEFAULT NULL,
+  `minimum_value` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `must_be_unique` bit(1) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `property_type` int(11) DEFAULT NULL,
+  `rome_rule` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK2fbowiccb4f81x8jdrbrrbfj7` (`rome_rule`),
+  CONSTRAINT `FK2fbowiccb4f81x8jdrbrrbfj7` FOREIGN KEY (`rome_rule`) REFERENCES `els_romenext_rules` (`id`),
+  CONSTRAINT `els_romenext_rule_properties_ibfk_1` FOREIGN KEY (`rome_rule`) REFERENCES `els_romenext_rules` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_rules`
+--
+
+DROP TABLE IF EXISTS `els_romenext_rules`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_rules` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `classification` int(11) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `rule_type` int(11) DEFAULT NULL,
+  `metadata_id` bigint(20) DEFAULT NULL,
+  `is_internal` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK9ehk9xq88vsp14178ymhyem6q` (`metadata_id`),
+  CONSTRAINT `FK9ehk9xq88vsp14178ymhyem6q` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`),
+  CONSTRAINT `els_romenext_rules_ibfk_1` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_tabActions`
+--
+
+DROP TABLE IF EXISTS `els_romenext_tabActions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_tabActions` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `action_label` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `onclick_script` text,
+  `metadata_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKh0cyeygcc300i4eyx8ji8lktu` (`metadata_id`),
+  CONSTRAINT `FKh0cyeygcc300i4eyx8ji8lktu` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`),
+  CONSTRAINT `els_romenext_tabActions_ibfk_1` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_tabContainers`
+--
+
+DROP TABLE IF EXISTS `els_romenext_tabContainers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_tabContainers` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `button_label` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `tab_name` varchar(255) DEFAULT NULL,
+  `metadata_id` bigint(20) DEFAULT NULL,
+  `tab_action` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKkk2pt378dt9hvmuis943hvdqk` (`metadata_id`),
+  KEY `FK76ce7m2sd1ql9mvybrxx3j6tp` (`tab_action`),
+  CONSTRAINT `FK76ce7m2sd1ql9mvybrxx3j6tp` FOREIGN KEY (`tab_action`) REFERENCES `els_romenext_tabActions` (`id`),
+  CONSTRAINT `FKkk2pt378dt9hvmuis943hvdqk` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`),
+  CONSTRAINT `els_romenext_tabContainers_ibfk_1` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`),
+  CONSTRAINT `els_romenext_tabContainers_ibfk_2` FOREIGN KEY (`tab_action`) REFERENCES `els_romenext_tabActions` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_tabObject_properties`
+--
+
+DROP TABLE IF EXISTS `els_romenext_tabObject_properties`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_tabObject_properties` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `rome_typeProperty` bigint(20) DEFAULT NULL,
+  `tab_container` bigint(20) DEFAULT NULL,
+  `tab_object` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK5gakgb6b2oi2to02n0dp4sn9` (`rome_typeProperty`),
+  KEY `FK94km39rk2ibvm2db8ffjfbhr1` (`tab_container`),
+  KEY `FKivy4mq9cg5kg6h1ibpekyrtbh` (`tab_object`),
+  CONSTRAINT `FK5gakgb6b2oi2to02n0dp4sn9` FOREIGN KEY (`rome_typeProperty`) REFERENCES `els_romenext_type_properties` (`id`),
+  CONSTRAINT `FK94km39rk2ibvm2db8ffjfbhr1` FOREIGN KEY (`tab_container`) REFERENCES `els_romenext_tabContainers` (`id`),
+  CONSTRAINT `FKivy4mq9cg5kg6h1ibpekyrtbh` FOREIGN KEY (`tab_object`) REFERENCES `els_romenext_tabObjects` (`id`),
+  CONSTRAINT `els_romenext_tabObject_properties_ibfk_1` FOREIGN KEY (`rome_typeProperty`) REFERENCES `els_romenext_type_properties` (`id`),
+  CONSTRAINT `els_romenext_tabObject_properties_ibfk_2` FOREIGN KEY (`tab_container`) REFERENCES `els_romenext_tabContainers` (`id`),
+  CONSTRAINT `els_romenext_tabObject_properties_ibfk_3` FOREIGN KEY (`tab_object`) REFERENCES `els_romenext_tabObjects` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_tabObjects`
+--
+
+DROP TABLE IF EXISTS `els_romenext_tabObjects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_tabObjects` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `rome_type` bigint(20) DEFAULT NULL,
+  `tab_container` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKhosmq78akkdwkha7ldf0exdyf` (`rome_type`),
+  KEY `FKp8bnfygsn7b42vsrhek067e20` (`tab_container`),
+  CONSTRAINT `FKhosmq78akkdwkha7ldf0exdyf` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `FKp8bnfygsn7b42vsrhek067e20` FOREIGN KEY (`tab_container`) REFERENCES `els_romenext_tabContainers` (`id`),
+  CONSTRAINT `els_romenext_tabObjects_ibfk_1` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `els_romenext_tabObjects_ibfk_2` FOREIGN KEY (`tab_container`) REFERENCES `els_romenext_tabContainers` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_type_decorator_property_value`
+--
+
+DROP TABLE IF EXISTS `els_romenext_type_decorator_property_value`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_type_decorator_property_value` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `value` varchar(255) DEFAULT NULL,
+  `rome_decorator_property` bigint(20) DEFAULT NULL,
+  `rome_type` bigint(20) DEFAULT NULL,
+  `rome_group_type` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKhonvd9klmg8xdd8569ra8nufe` (`rome_decorator_property`),
+  KEY `FKcc2ajupeiif4wc8rbv48fg613` (`rome_type`),
+  KEY `FK_type_deco_rome_group_typeINDX` (`rome_group_type`),
+  CONSTRAINT `FKcc2ajupeiif4wc8rbv48fg613` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `FKhonvd9klmg8xdd8569ra8nufe` FOREIGN KEY (`rome_decorator_property`) REFERENCES `els_romenext_decos_properties` (`id`),
+  CONSTRAINT `FKi72c4140edx7pmsyn7arqiag0` FOREIGN KEY (`rome_group_type`) REFERENCES `els_romenext_mysql_group_type` (`id`),
+  CONSTRAINT `els_romenext_type_decorator_property_value_ibfk_1` FOREIGN KEY (`rome_decorator_property`) REFERENCES `els_romenext_decos_properties` (`id`),
+  CONSTRAINT `els_romenext_type_decorator_property_value_ibfk_2` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_type_properties`
+--
+
+DROP TABLE IF EXISTS `els_romenext_type_properties`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_type_properties` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `created_version` int(11) DEFAULT NULL,
+  `default_value` varchar(255) DEFAULT NULL,
+  `is_required` bit(1) DEFAULT NULL,
+  `maximum_value` varchar(255) DEFAULT NULL,
+  `minimum_value` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `modified_version` int(11) DEFAULT NULL,
+  `must_be_unique` bit(1) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `property_type` int(11) DEFAULT NULL,
+  `property_subtype` int(11) DEFAULT NULL,
+  `property_subtypeParams` varchar(255) DEFAULT NULL,
+  `property_typeParams` varchar(255) DEFAULT NULL,
+  `rome_type` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKr2gl1ijl291a7xvdysyty4p1m` (`rome_type`),
+  CONSTRAINT `FKr2gl1ijl291a7xvdysyty4p1m` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `els_romenext_type_properties_ibfk_1` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_types`
+--
+
+DROP TABLE IF EXISTS `els_romenext_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_types` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `classification` int(11) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_internal` bit(1) DEFAULT NULL,
+  `is_root_type` bit(1) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `restrictionStatus` int(11) DEFAULT NULL,
+  `version` int(11) DEFAULT NULL,
+  `metadata_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKFC28675B93262A` (`metadata_id`),
+  CONSTRAINT `FKs0waq2gf8evvbqk1fo5rifbna` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`),
+  CONSTRAINT `els_romenext_types_ibfk_1` FOREIGN KEY (`metadata_id`) REFERENCES `els_romenext_metadata` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_types_els_romenext_decos`
+--
+
+DROP TABLE IF EXISTS `els_romenext_types_els_romenext_decos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_types_els_romenext_decos` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `rome_decorator` bigint(20) DEFAULT NULL,
+  `rome_type` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKh6bamdi9b7mgimmdjrsbf314l` (`rome_decorator`),
+  KEY `FK39evtbyocgljxo51ac0qpv9oi` (`rome_type`),
+  CONSTRAINT `FK39evtbyocgljxo51ac0qpv9oi` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`),
+  CONSTRAINT `FKh6bamdi9b7mgimmdjrsbf314l` FOREIGN KEY (`rome_decorator`) REFERENCES `els_romenext_decos` (`id`),
+  CONSTRAINT `els_romenext_types_els_romenext_decos_ibfk_1` FOREIGN KEY (`rome_decorator`) REFERENCES `els_romenext_decos` (`id`),
+  CONSTRAINT `els_romenext_types_els_romenext_decos_ibfk_2` FOREIGN KEY (`rome_type`) REFERENCES `els_romenext_types` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_user_log`
+--
+
+DROP TABLE IF EXISTS `els_romenext_user_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_user_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `last_login_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `user_uuid` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_users`
+--
+
+DROP TABLE IF EXISTS `els_romenext_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_users` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `pw` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `redirect_ip` varchar(255) DEFAULT NULL,
+  `is_redirected` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_users_admin`
+--
+
+DROP TABLE IF EXISTS `els_romenext_users_admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_users_admin` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `pw` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_version`
+--
+
+DROP TABLE IF EXISTS `els_romenext_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_version` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `build` bigint(20) DEFAULT NULL,
+  `changes` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `latest_sql_file` varchar(255) DEFAULT NULL,
+  `major` bigint(20) DEFAULT NULL,
+  `minor` bigint(20) DEFAULT NULL,
+  `rev` bigint(20) DEFAULT NULL,
+  `tag` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `els_romenext_workspace_dislay`
+--
+
+DROP TABLE IF EXISTS `els_romenext_workspace_dislay`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `els_romenext_workspace_dislay` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_date` datetime DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `user_group` varchar(255) DEFAULT NULL,
+  `user_name` varchar(255) DEFAULT NULL,
+  `workspace` mediumtext,
+  `rome_repo` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK6s7p4ltolc7dual0mln7ngrf8` (`rome_repo`),
+  CONSTRAINT `FK6s7p4ltolc7dual0mln7ngrf8` FOREIGN KEY (`rome_repo`) REFERENCES `els_romenext_metadata_repo` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
+-- version
+INSERT INTO `els_romenext_version` VALUES (1,0,'Initial Setup','The first system setup','1.0.0.SQL.rn',1,0,0,'RMNXT1002018','2018-03-20 22:04:03');
+
+-- DECORATOR
+INSERT INTO `els_romenext_decos` VALUES  
+(1,'TYPE',now(),'Logical Design','LOGICALGROUP',now(),'Logical',NULL),
+(2,'INSTANCE',now(),'Logical Display','LOGICALGROUP',now(),'Logical',NULL),
+(3,'TYPE',now(),'Form Design','FORMGROUP',now(),'FORMVIEW',NULL),
+(4,'INSTANCE',now(),'Form Display','FORMGROUP',now(),'FORMVIEW',NULL),
+(5,'TYPE',now(),'Physical Design','PHYSICALGROUP',now(),'Physical',NULL),
+(6,'INSTANCE',now(),'Physical Display','PHYSICALGROUP',now(),'Physical',NULL);
+
+
+-- Deco properties
+
+
+INSERT INTO `els_romenext_decos_properties` VALUES  
+(1,now(),'0.0','1','1','1','1',NULL,NULL,now(),'\0','x',7,1),
+(2,now(),'0.0','1','1','1','1',NULL,NULL,now(),'\0','y',7,1),
+(3,now(),'0.0','1','1','1','1',NULL,NULL,now(),'\0','z',7,1),
+(4,now(),'0.0','0','1','0','1',NULL,NULL,now(),'\0','x',7,2),
+(5,now(),'0.0','0','1','0','1',NULL,NULL,now(),'\0','y',7,2),
+(6,now(),'0.0','0','1','0','1',NULL,NULL,now(),'\0','z',7,2);
+
+-- Deco version
+
+INSERT INTO `els_romenext_decos_version` 
+VALUES (1,'<script src=\'/webgui/assets/js/els/fns/design/logical/1/DesignLogicalRenderer.js\'></script><script src=\'/webgui/assets/js/els/fns/design/logical/1/DesignLogicalRendererCrud.js\'></script><script src=\'/webgui/assets/js/els/fns/design/logical/1/libs/DesignCytoscapeUtils.js\'></script><script src=\'/webgui/assets/js/els/fns/design/logical/1/old/fns-designview.js\'></script><script src=\'/webgui/assets/js/els/fns/design/logical/1/old/fns-type.js\'></script><script src=\'/webgui/assets/js/els/fns/design/logical/1/old/typegraph-view.js\'></script><script src=\'/webgui/assets/js/els/fns/design/logical/1/old/fns-rule.js\'></script><script src=\'/webgui/assets/js/els/fns/design/logical/1/old/fns-connection.js\'></script>','designLogicalRenderer.initView();','2017-11-08 22:07:54','var designLogicalRenderer = new DesignLogicalRenderer(); designLogicalRenderer.initRenderer();','designLogicalRenderer.initBase','2017-11-08 22:07:54','base',1,1),
+(2,'<script src=\'/webgui/assets/js/els/fns/display/logical/1/DisplayLogicalRenderer.js\'></script><script src=\'/webgui/assets/js/els/fns/display/logical/1/DisplayLogicalRendererCrud.js\'></script><script src=\'/webgui/assets/js/els/fns/display/logical/1/libs/DisplayCytoscapeUtils.js\'></script><script src=\'/webgui/assets/js/els/fns/display/logical/1/old/graph-view.js\'></script><script src=\'/webgui/assets/js/els/fns/display/logical/1/old/node.js\'></script><script src=\'/webgui/assets/js/els/fns/display/logical/1/old/fns-edge.js\'></script><script src=\'/webgui/assets/js/els/fns/display/logical/1/old/fns-displayDrilldown-Up.js\'></script><script src=\'/webgui/assets/js/els/fns/display/logical/1/old/fns-displayview.js\'></script><script src=\'/webgui/assets/js/els/fns/display/logical/1/old/fns-node.js\'></script>','displayLogicalRenderer.initView();','2017-11-08 22:07:54','var displayLogicalRenderer = new DisplayLogicalRenderer(); displayLogicalRenderer.initRenderer();','displayLogicalRenderer.initBase','2017-11-08 22:07:54','base',1,2);
+
+
+-- metadata
+ INSERT INTO `els_romenext_metadata` VALUES (1,now(),now(),'DefaultMetadata','DefaultMetadata',NULL,NULL);
+
+-- metadata repo
+INSERT INTO `els_romenext_metadata_repo` VALUES (1,now(),'default repository','http://localhost:7474',now(),'default db','superman','','neo4j',1,NULL,NULL);
+
+
+-- insert offset for types
+ 
+INSERT INTO `els_romenext_types` ( `classification`, `created_date`, `is_internal`, `is_root_type`, `modified_date`, `name`, `restrictionStatus`, `version`, `metadata_id`) VALUES 
+( '17', now(), '1', '1', now(), '_WORKSPACE', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE2', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE3', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE4', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE5', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE6', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE7', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE8', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE9', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE10', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE11', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE12', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE13', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE14', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE15', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE16', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE17', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE18', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE19', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE20', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE21', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE22', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE23', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE24', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE25', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE26', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE27', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE28', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE29', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE30', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE31', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE32', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE33', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE34', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE35', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE36', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE37', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE38', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE39', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE40', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE41', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE42', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE43', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE44', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE45', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE46', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE47', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE48', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE49', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE50', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE51', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE52', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE53', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE54', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE55', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE56', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE57', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE58', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE59', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE60', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE61', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE62', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE63', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE64', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE65', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE66', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE67', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE68', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE69', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE70', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE71', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE72', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE73', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE74', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE75', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE76', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE77', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE78', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE79', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE80', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE81', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE82', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE83', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE84', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE85', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE86', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE87', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE88', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE89', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE90', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE91', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE92', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE93', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE94', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE95', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE96', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE97', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE98', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE99', '1', NULL, '1'),
+( '1', now(), '1', '1', now(), '_TEMP_TYPE100', '1', NULL, '1');
+
+
+
+
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-03-20 14:31:29

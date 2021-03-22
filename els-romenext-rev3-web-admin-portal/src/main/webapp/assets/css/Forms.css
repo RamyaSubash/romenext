@@ -1,0 +1,413 @@
+@charset "UTF-8";
+
+.env_forms{
+	 min-width: 500px;
+     margin: 10px 400px;  
+}
+.form-server {
+	padding: 2em;
+	background-color: #E7F2FC;
+	border-radius: 4px;
+	border: 1px solid #505FF6;
+	box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
+	font-family: 'PT Sans', Arial, sans-serif;
+	margin: 20px auto;
+}
+
+
+.form-server input[type=text],
+.form-server input[type=password],
+.form-server textarea {	
+	border: 1px solid #505FF6;
+	border-radius: .2em;	
+	font-family: 'PT Sans', Arial, sans-serif;
+	font-size: 1.1em;
+	padding: 6px 12px; /*.4em 1em;*/
+	margin: 0 0 .8em;
+	width: 100%;
+    box-shadow: 0 0 8px rgba(0,0,0,.08) inset;
+}
+
+
+.form-server  input[type=text],
+.form-server  input[type=password],
+.form-server  input[type=tel],
+.form-server  input[type=submit],
+.form-server textarea {	
+	-webkit-transition: all .2s ease-in-out;
+	   -moz-transition: all .2s ease-in-out;
+	        transition: all .2s ease-in-out;
+}
+
+
+.form-server input[type=text]:active,
+.form-server input[type=text]:focus,
+.form-server input[type=password]:active,
+.form-server input[type=password]:focus,
+.form-server textarea:active,
+.form-server textarea:focus {	
+  outline: 0;
+  box-shadow: 0 0 6px rgb(176, 226, 188);
+}
+.form-server button {
+	display: inline-block;
+}
+
+#error_msg{
+	color:red;
+}
+
+
+
+/*****************************************************************/
+/* DivTable.com */
+
+div.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 50%;
+  text-align: left;
+  border-collapse: collapse;
+  margin-left: 200px;
+}
+.divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+  padding: 3px 2px;
+}
+.divTable.blueTable .divTableBody .divTableCell {
+  font-size: 14px;
+}
+.divTable.blueTable .divTableHeading {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+.divTable.blueTable .divTableHeading .divTableHead {
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #D0E4F5;
+}
+.divTable.blueTable .divTableHeading .divTableHead:first-child {
+  border-left: none;
+}
+
+.blueTable .tableFootStyle {
+  font-size: 14px;
+}
+.blueTable .tableFootStyle .links {
+	 text-align: right;
+}
+.blueTable .tableFootStyle .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.blueTable.outerTableFooter {
+  border-top: none;
+}
+.blueTable.outerTableFooter .tableFootStyle {
+  padding: 3px 5px; 
+}
+
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
+
+
+
+div.metadata {
+  border: 1px solid #babdb6;
+  background-color: #f3f3f3;
+  text-align: left;
+  border-collapse: collapse;
+  width: 300px;
+}
+
+div.repo {
+  border: 1px solid #eeeeee;
+  background-color: #729fcf;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+
+
+/******************************************************/
+.rowflex {
+    display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.columnflex {
+    flex: 50%;
+    padding: 10px;
+}
+
+
+
+
+
+/******************************************************/
+.msqlimg {
+	width:100px; 
+	height:150px;
+	float:left;
+}
+
+
+#parent{
+    position:relative;
+    background-color:#ffffff;
+    height:100%;
+    margin:0;
+    padding:0;
+    width:100%;
+}
+/* #divMD{ */
+/*     float:left; */
+/*     width:20%; */
+/*     heigth:100%; */
+/*     resize: both; */
+/*     background-color:#dedede; */
+/* } */
+/* #divStatus{ */
+/*     float:left; */
+/*     width: 50%; */
+/*     height: 100%; */
+/*     background-color:#ffffff; */
+/* } */
+/* #messages { */
+/*     width: 25%; */
+/*     background-color:#dedede; */
+/*     height: 100%;   */
+/*     float:left; */
+/* } */
+
+
+fieldset {
+	margin-bottom: 2em;
+	padding: 1em;
+}
+fieldset fieldset {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+/*******************************************************************/
+.device {
+    width: 250px;
+    height: 125px;
+    margin: 5px;
+    padding: 5px;
+    color: #191717;
+    vertical-align: top;
+    border-radius: 8px;
+    border : solid 2px;
+    border-color : blue;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    display: inline-block;
+}
+
+device#lastusedid {
+	background-color: #5eb85e;
+}
+
+#messages .btn-holder {
+  justify-content: flex-end;
+  display: flex;
+}
+
+
+.divForm{
+	/* The search form. */
+	background-color:#d0d3d6;
+	padding:50px 50px 30px;
+	margin:80px 0;
+	width:600px;
+	position:relative;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	align: center;
+}
+
+
+
+#searchInputContainer{
+	/* This div contains the transparent search box */
+	width:420px;
+	height:36px;
+	background:url("img/searchBox.png") no-repeat;
+	float:left;
+	margin-right:12px;
+}
+
+#s{
+	/* The search text box. */
+	
+/* 	border:none; */
+	color:#888888;
+/* 	background:url("img/searchBox.png") no-repeat; */
+	
+/* 	float:left; */
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:15px;
+	height:36px;
+	line-height:36px;
+	margin-right:12px;
+	outline:medium none;
+	padding:0 0 0 35px;
+	text-shadow:1px 1px 0 white;
+	width:200px;
+}
+#searchInContainer{
+	float:left;
+	margin-top:12px;
+	width:330px;
+}
+
+label{
+	color:#251e1e;
+	cursor:pointer;
+	font-size:14px;
+	position:relative;
+	right:-2px;
+	top:-2px;
+	margin-right:10px;
+	white-space:nowrap;
+	/*float:left;*/
+}
+
+input[type=radio]{
+	cursor:pointer;
+	/*float:left;*/
+}
+
+.serverscan::before {
+    counter-increment: section;
+    content: counter(section) " :     ";
+}
+
+
+div.mainForm{
+width: 420px;
+/* margin-top: 10px; */
+float:left;
+padding: 10px 55px 40px;
+background-color: rgba(181, 186, 212, 0.65);
+border: 15px solid white;
+box-shadow: 0 0 10px;
+border-radius: 2px;
+font-size: 13px;
+}
+
+div.mainForm input[type=text], div.mainForm  input[type=password] {
+	width: 97.7%;
+	height: 25px;
+	padding-left: 5px;
+	margin-bottom: 20px;
+	/* margin-top: 8px; */
+	box-shadow: 0 0 5px #5c6061;
+	border: 2px solid #00F5FF;
+	color: #4f4f4f;
+	font-size: 16px;
+}
+div.mainForm label{
+	color: #464646;
+	text-shadow: 0 1px 0 #fff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom : 2px;
+}
+.div.mainForm input[type=text] {
+	padding-left: 20px;
+}
+
+.columnleft {
+    float: left;
+    width: 20%;
+    padding: 15px;
+    resize: both; 
+    background-color:#eeeeec; 
+}
+.columnmid {
+	float: left;
+    width: 50%;
+    padding: 15px;
+}
+.columnright {
+	float: left;
+    width: 30%;
+    padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+    .columnleft, .columnmid , .columnright {
+        width: 100%;
+    }
+}
+
+
+
+
+span.isvalid:after{
+  content: '✓';
+  color: green;
+  }
+ span.notvalid:after{
+     content: '×';
+     color: red;
+   
+ } 
+.isvalid input[id$='ip']{
+	border: 2px solid green;
+}
+.notvalid input[id$='ip']{
+	border: 2px solid red;
+}
+ 
+#btn_close {
+	float: right;
+}
+/******************************************************************/
+
+.lamp {
+    height: 30px;
+    width: 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 25px;
+}
+.lampRed {
+    background-color: red;
+}
+.lampYellow {
+    background-color: yellow;
+}
+.lampGreen {
+    background-color: green;
+}
+
+
+
+
+

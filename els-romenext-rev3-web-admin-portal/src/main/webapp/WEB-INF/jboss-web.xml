@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+
+	<context-root>/admin</context-root>
+	
+<!--   <resource-ref> -->
+<!--     <res-ref-name>jdbc/MySql</res-ref-name> -->
+<!--     <jndi-name>java:jdbc/MySql</jndi-name> -->
+<!--     <res-type>javax.sql.DataSource</res-type> -->
+<!--   </resource-ref> -->
+  
+<!--   	<depends>jboss.jca:service=DataSourceBinding,name=jdbc/MySql</depends> -->
+  	
+</jboss-web>
