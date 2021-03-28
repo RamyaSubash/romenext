@@ -40,6 +40,8 @@ function cancelNodeLink(){
 function saveLogicalPosition() {
 	console.log("Entered 2/old");
 	var jsonstrArray1 = [];
+	console.log("what is irvCy?")
+	console.log(irvCy);
 	if (irvCy.nodes() == null || irvCy.nodes().length < 1) {
 		return;
 	}
@@ -80,7 +82,7 @@ function saveLogicalPosition() {
         // Retrieve  the positions of the node
 		newDecoProperties.push({propertyName: "x", value: irvCy.nodes()[i].position().x.toString(), propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["x"].id.toString()});
 		newDecoProperties.push({propertyName: "y", value: irvCy.nodes()[i].position().y.toString(), propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["y"].id.toString()});
-		newDecoProperties.push({propertyName: "z", value: "0", propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["z"].id.toString()});
+		//newDecoProperties.push({propertyName: "z", value: "0", propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["z"].id.toString()});
 		
 		// create a json for that node with its type, uuid and positions
 		var jsonstr = {

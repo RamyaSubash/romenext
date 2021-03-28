@@ -18,7 +18,8 @@ function NodeUtils() {
   	    console.log("Error: " + xhr.responseText); 
 	}
 	
-	var apis = new apiRomeNext();	
+	 var apis = new apiRomeNext();
+	 console.log("After creating apiRomeNext() ");
 	apis.loadAllNodes( jsonData, successFunction, failFunction );
 	
 };

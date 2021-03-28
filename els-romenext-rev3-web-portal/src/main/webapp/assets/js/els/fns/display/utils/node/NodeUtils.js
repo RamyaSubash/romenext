@@ -59,8 +59,11 @@ function NodeUtils() {
 	
 	nodeMap = {}; 
 	edgeMap = {};
-	
+	console.log("Inside buildNodeAndEdgeVars");
 	$.each(jsonData.nodes, function(key, value){
+		
+		console.log(key);
+		console.log(value);
 		
 		var uuid = NodeUtils.findUUID( value );	
 		var name  = NodeUtils.findNameInst(value);
@@ -186,7 +189,10 @@ function NodeUtils() {
 	 if(!$.isEmptyObject(data) ){
 		 var uuid = null;
 		 if (!$.isEmptyObject(data.sysProperties)){
-			 $.each( data.sysProperties, function( key, value ) {	
+			 $.each(data.sysProperties, function (key, value) {
+				 console.log("Checking data.sysProperties.name")
+				 console.log(value.name);
+				 console.log(value.value);
 				if(value.name=="uuid"){
 					uuid = value.value 
 				}

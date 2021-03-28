@@ -2,6 +2,7 @@ package com.els.romenext.api.node.req;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
@@ -31,11 +32,20 @@ public class GetAllNodesAndEdgesByGroupRequest extends GroupRequest {
 	public String validateRequest(JSONObject json) {
 		
 		String coreRequest = super.validateRequest(json);
+		System.out.println("Inside GetAllNodesAndEdgesByGroupRequest.validateRequest");
+		System.out.println(coreRequest);
 
 		if( coreRequest != null ) {
 			return coreRequest;
 		}
 		
+		System.out.println("coreRequest is null, See what is inside json");
+		Iterator<String> keys = json.keys();
+		while(keys.hasNext()) {
+    		String key = keys.next();
+   			System.out.println(key);
+    	}
+
 		
 		String empty = null;
 		

@@ -275,6 +275,9 @@ public class Node {
 			return responseBuilder.build();
 		}
         String empty = request.validateRequest(json);
+        System.out.println("/get/all/withedges/metadata/" + id);
+        System.out.println(empty);
+        
 
 		if(!StringUtils.isEmpty(empty)) {
 			log.error("This is missing: " + empty);
@@ -293,6 +296,7 @@ public class Node {
 		Response reponse = request.preprocessor();
 		
 		if (reponse != null) {
+			System.out.println("Return the response from preprocessor");
 			return reponse;
 		}
 		

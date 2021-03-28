@@ -215,7 +215,8 @@ public class Neo4jServerConnection<T extends INeo4jParsable<T>> implements Neo4j
 				 results = results + output;
 				 
 			 }
-		 
+		 	 System.out.println("Printing the results from neo4j api");
+			 System.out.println(results);
 			 br.close();
 			 
 			 conn.disconnect();
@@ -272,6 +273,7 @@ public class Neo4jServerConnection<T extends INeo4jParsable<T>> implements Neo4j
 			T t;
 			try {
 				t = clazz.newInstance();
+			
 				
 				List<T> results = t.parseNeo4jAPIResults( result );
 				

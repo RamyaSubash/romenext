@@ -8,6 +8,8 @@ function NodeApis() {
 		}
 		
 		jsonData = GlobalApiUtils.assignApiHeaders( jsonData );
+		console.log("Post Request to " + apiBaseUrl + 'node/get/all/withedges/metadata/'+ selectedMetaDataRepo);
+		console.log(jsonData);
 
 		var request = $.ajax({
 			method : 'POST',
@@ -38,6 +40,10 @@ function NodeApis() {
 //		jsonData["groupname"] = userGroup.name;
 		
 		jsonData = GlobalApiUtils.assignApiHeaders( jsonData );
+		
+		console.log("trying to save node");
+		console.log(jsonData);
+		console.log("post to url: " + apiBaseUrl + 'node/create/metadata/'+ selectedMetaDataRepo);
 		
 		var request = $.ajax({
 			method : 'POST',

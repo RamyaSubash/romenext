@@ -39,7 +39,7 @@ AllForms.selectMD = function(ip) {
 												html : "Oracle"
 											})	
 									),
-									$("<br/>"),	
+									$("<br/>")
 							),
 							$("<div/>", {}).append(
 //									$("<label/>", {
@@ -197,7 +197,7 @@ AllForms.scanForm = function(startIP, endIP,  port) {
 						id : 'startip',
 						title : "Format  xxx.xxx.xxx.xxx",
 						value : startIP
-					}),
+					})
 				),
 				$("<label/>", {
 					html : "To"
@@ -210,7 +210,7 @@ AllForms.scanForm = function(startIP, endIP,  port) {
 						id : 'endip',
 						title : "Format  xxx.xxx.xxx.xxx",
 						value : endIP
-					}),
+					})
 				),
 				$("<br/>"),
 				$("<input/>", {
@@ -242,7 +242,7 @@ AllForms.scanForm = function(startIP, endIP,  port) {
 						$("<br/>"),
 				$("<div/>", {
 					id: "resultScan"
-				}),
+				})
 				
 			)
 		)
@@ -278,7 +278,7 @@ AllForms.statusForm = function( ip ) {
 				
 				$("<div/>", {
 					id : 'red',
-				}),
+				})
 				
 			)
 		)
@@ -333,7 +333,7 @@ AllForms.saveMDForm = function(ip, port, username, pwd, schema, innodb) {
 				type : 'submit',
 				id : 'btn_save',
 				value : 'Save',
-			}),
+			})
 
 		)
 	)

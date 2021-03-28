@@ -30,10 +30,11 @@ public class InternalNeo4jNodeUtils {
 		Iterable<Label> ls = node.getLabels();
 		List<String> labelList = new ArrayList<String>(); 
 		for (Label l : ls) {
-			
+
 			labelList.add(l.toString());
 			
 		}
+		
 		resultNode.setLabels(labelList);
 		
 		// note: we originally had a simple list of properties in the Neo4jNode, but we transitioned to a unique bucket for Types/System/Decos

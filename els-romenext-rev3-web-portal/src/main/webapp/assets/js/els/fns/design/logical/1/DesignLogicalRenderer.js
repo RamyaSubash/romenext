@@ -850,7 +850,8 @@ function DesignLogicalRenderer() {
 		
 		var ruleApis = new RuleApis();
 		ruleApis.updateRuleAndProperties(ruleName, jsonData2, doneFunction2, failFunction2);
-		
+		console.log("ruleMapViaId updated");
+		console.log(ruleMapViaId);
 		DesignCytoscapeUtils.clickAnEdge(connId);
 				
 	};

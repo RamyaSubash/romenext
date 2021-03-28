@@ -92,12 +92,15 @@ function retrieveNodeFromForm(form){
 		$(form).find('div#defaultDecoForNode').find(':input').each(function (i, field) {
 			jsonData[field.name] = field.value;
 		});
+
+		console.log("what is predefinedSelectedDecoPropertiesMap?");
+		console.log(predefinedSelectedDecoPropertiesMap);
 		
 
 		nodeDecoProperties = [];
 	    nodeDecoProperties.push({propertyName:"x", value:dragItemPositionX.toString(), propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["x"].id.toString()});
 	    nodeDecoProperties.push({propertyName:"y", value:dragItemPositionY.toString(), propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["y"].id.toString()});
-	    nodeDecoProperties.push({propertyName:"z", value:"0", propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["z"].id.toString()});
+	    //nodeDecoProperties.push({propertyName:"z", value:"0", propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["z"].id.toString()});
 	   jsonData.decoProperties = nodeDecoProperties;	
 				
 	   return jsonData;

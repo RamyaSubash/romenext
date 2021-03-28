@@ -479,8 +479,8 @@ public class Neo4jNode implements INeo4jParsable<Neo4jNode> {
 			
 			String label = (String) jsonLabels.get(i);
 			
-			if (!StringUtils.isBlank(label)) {
-				
+			if ((!StringUtils.isBlank(label)) && (!label.equals("super"))) {
+
 				labelList.add((String) jsonLabels.get(i));
 				
 			}

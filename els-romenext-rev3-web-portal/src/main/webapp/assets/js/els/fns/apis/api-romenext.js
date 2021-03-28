@@ -450,6 +450,8 @@ function apiRomeNext() {
 	}
 	
 	this.loadAllNodes = function loadAllNodes( jsonData,  doneFunction, failFunction ){
+		console("Trying to post to "+ apiBaseUrl + "node/edge/simplified/metadata/" + selectedMetaDataRepo + "/" + loggedInUserName);
+		console.log(jsonData);
 		if (selectedMetaData){
 			var loadAllNodesRequest =$.ajax({	
 				url: apiBaseUrl + "node/edge/simplified/metadata/" + selectedMetaDataRepo + "/" + loggedInUserName,

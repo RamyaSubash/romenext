@@ -33,7 +33,8 @@ GlobalDecoUtils.getDecoByClassificationAndGrouping = function (classification, g
 	};
 	
 	var apis = new DecoApis();
-	
+	console.log("Deco Json To Request");
+	console.log(json);
 	apis.getDecoByClassificationAndGrouping(json, successFunction, failFunction);
 	
 };

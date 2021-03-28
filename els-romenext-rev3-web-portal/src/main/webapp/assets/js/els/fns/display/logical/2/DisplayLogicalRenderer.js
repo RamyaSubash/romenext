@@ -342,9 +342,15 @@ function DisplayLogicalRenderer() {
 			
 			var linkRuleIds = GlobalRuleUtils.getAllLinkIdsFromRuleMap();
 			var typeIds = [];
+			console.log("typeMapViaId in DisplayLogicalRenderer");
+			console.log(typeMapViaId);
 			$.each(typeMapViaId, function(id, type) {
 				typeIds.push(id);	
 			});
+			console.log("what is in typeIds?");
+			console.log(typeIds);
+			console.log("what is in linkRuleIds?")
+			console.log(linkRuleIds);
 			DisplayLogicalRendererBar.generateTypeBars(typeIds, linkRuleIds);
 //			DisplayLogicalRendererBar.showOrHideTypeLinkBars();
 //			this.loadTypeInstBar(null);
@@ -2375,6 +2381,7 @@ function DisplayLogicalRenderer() {
 					}
 
 				}
+				
 
 				$.each(requiredTypeIdMap[key], function(index, requiredTypeId) {
 
@@ -2461,8 +2468,11 @@ function DisplayLogicalRenderer() {
 			var successFunction = function(data) {
 				result = data;
 				console.log("Node created " + data.type);
+				console.log(data);
 				if (data) {
 					if (!irvCy) {
+
+						console.log("irvCy is empty")
 
 //						$.each(typeMapViaId, function(key, value) {
 //							listTypeIds.push(key);
@@ -2482,7 +2492,7 @@ function DisplayLogicalRenderer() {
 //							listTypeIds.push(value);
 //						});
 						NodeUtils.loadNodes();
-						listTypeIds = [];
+						console.log(listTypeIds);
 //						listConnIds = [];
 						// NodeUtils.loadAllNodesAndEdges();
 

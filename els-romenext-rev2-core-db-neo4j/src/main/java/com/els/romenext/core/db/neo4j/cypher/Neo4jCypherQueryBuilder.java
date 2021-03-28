@@ -90,7 +90,9 @@ public class Neo4jCypherQueryBuilder {
 //		System.out.println("Property in queryBuilder[" + properties + "]");
 		
 		String n = "n";
-		String queryNode = new Neo4jCypherExpressionBuilder().buildNodeExpression(n, nNode.getLabels(), properties);
+		List<String> labels = nNode.getLabels();
+		labels.add(0,"super");
+		String queryNode = new Neo4jCypherExpressionBuilder().buildNodeExpression(n, labels, properties);
 		
 //		System.out.println("queryNode in QueryBuilder[" + queryNode + "]");
 		

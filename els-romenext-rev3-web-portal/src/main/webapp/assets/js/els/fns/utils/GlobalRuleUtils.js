@@ -37,7 +37,8 @@ GlobalRuleUtils.generateLinkRuleDropList = function (elementId, mode) {
 
 GlobalRuleUtils.getAllLinkIdsFromRuleMap = function () {
 	var results = [];
-	
+	console.log("ruleMapViaId in GlobalRuleUtils");
+	console.log(ruleMapViaId);
 	$.each(ruleMapViaId, function(id, rule) {
 		if (rule.classification == 'link') {
 			results.push(id);
