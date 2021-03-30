@@ -1,0 +1,12 @@
+1. Set up mysql database (start with blank database and initialize all mysql users) using the scripts: mysql_db_setup_1.mysql ~  mysql_db_setup_5.mysql. 
+2. Start Neo4j (version 3.5.*)： Install APOC plugin and allow automatic UUIDs.
+    CREATE CONSTRAINT ON (n:super) ASSERT n.sys_uuid IS UNIQUE;
+    CALL apoc.uuid.install('super', {addToExistingNodes: true, uuidProperty: 'sys_uuid'}) yield label, installed, properties, batchComputationResult;
+    (Here, I am creating a common label for all nodes to allow unique constaint accross multiple labels)
+    https://github.com/neo4j/neo4j/issues/7814
+    https://neo4j.com/docs/labs/apoc/3.5/graph-updates/uuid/#automatic-uuids
+3. Start wildfly server by allowing random ip address using the following command:
+	standalone -b=0.0.0.0 -bmanagement=0.0.0.0
+4. Upload the three war files to wildfly.
+5. Set up users(those who can use the webgui portal) @ ${your ip address}/admin
+6. Start webgui portal @ ${}/webguiportal
