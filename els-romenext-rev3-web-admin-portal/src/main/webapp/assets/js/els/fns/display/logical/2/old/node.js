@@ -97,7 +97,7 @@ function retrieveNodeFromForm(form){
 		nodeDecoProperties = [];
 	    nodeDecoProperties.push({propertyName:"x", value:dragItemPositionX.toString(), propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["x"].id.toString()});
 	    nodeDecoProperties.push({propertyName:"y", value:dragItemPositionY.toString(), propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["y"].id.toString()});
-	    nodeDecoProperties.push({propertyName:"z", value:"0", propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["z"].id.toString()});
+	    // nodeDecoProperties.push({propertyName:"z", value:"0", propertyType:"DOUBLE", id: predefinedSelectedDecoPropertiesMap["z"].id.toString()});
 	   jsonData.decoProperties = nodeDecoProperties;	
 				
 	   return jsonData;
