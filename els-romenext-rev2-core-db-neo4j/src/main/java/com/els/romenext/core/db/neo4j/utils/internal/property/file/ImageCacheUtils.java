@@ -26,7 +26,7 @@ public class ImageCacheUtils {
 
 	private static Logger logger = Logger.getLogger( ImageCacheUtils.class );
 	//	public final static String CACHE_DIR = "/tmp/img/cache";
-	public final static String CACHE_DIR = "/opt/els/romenext/img/cache";
+	public final static String CACHE_DIR = "~/els/romenext/img/cache";
 	
 	public final static String CHECKSUM_POSTFIX = "_CHKSM";
 	public final static String SEQ_POSTFIX = "_SQN";

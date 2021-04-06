@@ -14,7 +14,7 @@ import com.els.romenext.web.admin.rev3.portal.pojo.session.MetadataServer;
 public class ServerFileUtils {
 
 	private static Logger logger = Logger.getLogger( ServerFileUtils.class );
-	public final static String CACHE_DIR = "/opt/els/romenext/admin/server";
+	public final static String CACHE_DIR = "~/els/romenext/admin/server";
 	
 	public final static String CHECKSUM_POSTFIX = "_CHKSM";
 	public final static String SEQ_POSTFIX = "_SL";

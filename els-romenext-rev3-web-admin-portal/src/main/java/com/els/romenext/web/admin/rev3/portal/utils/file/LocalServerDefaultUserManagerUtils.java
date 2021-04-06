@@ -31,7 +31,7 @@ public class LocalServerDefaultUserManagerUtils {
 	}
 
 	// only linux based
-	private static final String LOCAL_SERVER_FILE_DIR = "/opt/els/romenext/admin/accounts";
+	private static final String LOCAL_SERVER_FILE_DIR = "~/els/romenext/admin/accounts";
 	private static final String LOCAL_SERVER_FILE_NAME = "ACCOUNTS.sec";
 	
 	private static final String LOCAL_SERVER_ENCKEY = "74b8b1940d9b2e2225f9b5f4ac3d2a93b0da1ef40ed67f5ce256cadd25cfabda";

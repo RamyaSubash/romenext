@@ -20,7 +20,7 @@ import com.els.romenext.web.general.utils.security.AESEncryptor;
 public class LocalServerFileManagerUtils {
 
 	// only linux based
-	private static final String LOCAL_SERVER_FILE_DIR = "/opt/els/romenext/admin/servers";
+	private static final String LOCAL_SERVER_FILE_DIR = "~/els/romenext/admin/servers";
 	private static final String LOCAL_SERVER_FILE_NAME = "SERVER.sec";
 	
 	private static final String LOCAL_SERVER_ENCKEY = "(*#OIH(SD(*@LJHKDSFHAL*OSDUGF#HKLHSDFOH";

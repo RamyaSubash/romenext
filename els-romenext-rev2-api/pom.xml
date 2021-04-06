@@ -232,7 +232,7 @@
 					<wadlFile>${project.build.outputDirectory}/romeNext.wadl
 					</wadlFile>
 					<formatWadlFile>true</formatWadlFile>
-					<baseUri>http://192.168.1.41/api</baseUri>
+					<baseUri>http://192.168.1.46/api</baseUri>
 					<packagesResourceConfig>
 						<param>com.els.romenext.api</param>
 					</packagesResourceConfig>
