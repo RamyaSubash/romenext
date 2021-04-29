@@ -20,6 +20,7 @@ import com.els.romenext.core.db.neo4j.enums.Neo4jPropertyTypeEnum;
 public class Neo4jCypherQueryBuilder {
 	
 	private static Logger log = Logger.getLogger(Neo4jCypherQueryBuilder.class);
+
 	
 	//-----------------------------------//
 	//-----------------------------------//
@@ -413,6 +414,7 @@ public class Neo4jCypherQueryBuilder {
 		
 		String cypherQuery = Neo4jCypherClauseEnum.MATCH + " " + queryStartNode + ", " + queryEndNode + " " + 
 							 Neo4jCypherClauseEnum.CREATE + " " + "(" + n + ")" + queryRel + "(" + m + ")" + " " +  
+							 "SET r.sys_uuid = apoc.create.uuid()" +
 				             Neo4jCypherClauseEnum.RETURN + " " + r + ", type(" + r + "), " + "id(" + r +"), id(startNode(" + r + ")), id(endNode(" + r + "))";
 
 		return cypherQuery;
