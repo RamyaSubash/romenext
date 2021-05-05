@@ -1,0 +1,21 @@
+Step 1: cd into the folder containing this file
+
+Step 2: move the three war files you built (see "instructions to war files with eclipse.pdf" for build instructions)
+
+Step 3: Run the build with docker build --tag=emptylot/romenext_rev3:yourname .
+
+Step 4: Run the container with docker run -it -p 8080:8080 --name romenext_app_rev3 emptylot/romenext_rev3:yourname
+
+(Comment: 
+you might need to modify the line in the file els-romenext-rev3-web-admin-portal/src/main/webapp/jsps/headers/javascriptHeaders.jsp
+ var apiBaseUrl = "http://<%= session.getAttribute("api_url") %>:8080/api/"; 
+to the following:
+ var apiBaseUrl = "http://{your host ip}:8080/api/"; , where {your host ip} is your machine ip. 
+ 
+ you might need to modify the line in the file els-romenext-rev3-web-portal/src/main/webapp/jsps/headers/javascriptHeaders.jsp
+ var apiBaseUrl = "http://<%= session.getAttribute("api_url") %>:8080/api/"; 
+to the following:
+ var apiBaseUrl = "http://{your host ip}:8080/api/"; , where {your host ip} is your machine ip. 
+  
+	
+
